@@ -172,15 +172,13 @@ const workerConfig = {
       name: '服务器（洛杉矶）',
       method: 'GET',
       target: 'http://server.lied.us',
-      expectedCodes: [404],
       timeout: 10000,
-      responseKeyword: '404'
     },
     {
       id: 'server_192',
       name: '服务器（圣何塞）',
       method: 'TCP_PING',
-      target: '192.3.85.97:22',
+      target: '192.3.85.97',
       timeout: 5000
     }
   ],
