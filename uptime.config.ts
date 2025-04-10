@@ -10,7 +10,7 @@ const pageConfig = {
     "后端API": ["user_service", "payment_service", "stockapi_lied_us", "oneapi_lied_top", "gemini_api_lied_top"],
     "私有服务": ["internal_db", "admin_panel", "chat_lied_us", "md_lied_us", "weather_lied_top", "shouxin_lied_top", "dns_lied_top", "adguardhome", "bit_lied_top", "bitwarden"],
     "Xray": ["lax_vwc_2083", "lax_grpc_8443", "lax_grpc_2087", "lax_vision_2053", "lax_vision_2096"],
-    "服务器": ["server_us", "server_192"]
+    "服务器": ["server_us"]
   }
 }
 
@@ -173,13 +173,6 @@ const workerConfig = {
       method: 'GET',
       target: 'http://server.lied.us',
       timeout: 10000,
-    },
-    {
-      id: 'server_192',
-      name: '服务器（圣何塞）',
-      method: 'TCP_PING',
-      target: '192.3.85.97',
-      timeout: 5000
     }
   ],
 
