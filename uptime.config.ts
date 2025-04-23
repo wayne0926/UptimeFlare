@@ -8,7 +8,7 @@ const pageConfig = {
   group: {
     "前端服务": ["frontend_api", "landing_page", "login_page", "wrans_blog"],
     "后端API": ["user_service", "payment_service", "stockapi_lied_us", "oneapi_lied_top", "gemini_api_lied_top"],
-    "私有服务": ["internal_db", "admin_panel", "chat_lied_us", "md_lied_us", "weather_lied_top", "shouxin_lied_top", "dns_lied_top", "adguardhome", "bit_lied_top", "bitwarden"],
+    "私有服务": ["internal_db", "admin_panel", "chat_lied_us", "md_lied_us", "weather_lied_us", "shouxin_lied_top", "dns_lied_top", "adguardhome", "bit_lied_top", "bitwarden"],
     "Xray": ["lax_vwc_2083", "lax_grpc_8443", "lax_grpc_2087", "lax_vision_2053", "lax_vision_2096"],
     "服务器": ["server_us"]
   }
@@ -93,10 +93,10 @@ const workerConfig = {
       responseKeyword: 'Documents'
     },
     {
-      id: 'weather_lied_top',
-      name: 'weather.lied.top 天气',
+      id: 'weather_lied_us',
+      name: 'weather.lied.us 天气',
       method: 'GET',
-      target: 'https://weather.lied.top',
+      target: 'https://weather.lied.us',
       expectedCodes: [200],
       timeout: 10000,
       responseKeyword: '预测天数'
