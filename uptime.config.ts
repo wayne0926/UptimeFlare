@@ -30,7 +30,7 @@ const workerConfig = {
       id: 'login_page',
       name: 'xui面板',
       method: 'GET',
-      target: 'https://xui.lied.top/wne66',
+      target: 'https://xui.lied.us/wne66',
       expectedCodes: [200],
       timeout: 10000,
       responseKeyword: 'Welcome'
@@ -123,7 +123,7 @@ const workerConfig = {
       id: 'bit_lied_top',
       name: 'Vaultwarden',
       method: 'GET',
-      target: 'https://bit.lied.top',
+      target: 'https://bit.lied.us',
       expectedCodes: [200],
       timeout: 10000,
       responseKeyword: 'Vaultwarden'
