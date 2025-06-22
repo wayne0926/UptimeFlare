@@ -7,8 +7,8 @@ const pageConfig = {
   ],
   group: {
     "前端服务": ["frontend_api", "landing_page", "login_page", "wrans_blog"],
-    "后端API": ["user_service", "payment_service", "stockapi_lied_us", "oneapi_lied_top", "gemini_api_lied_top"],
-    "私有服务": ["internal_db", "admin_panel", "chat_lied_us", "md_lied_us", "weather_lied_us", "shouxin_lied_top", "dns_lied_top", "adguardhome", "bit_lied_top", "bitwarden"],
+    "后端API": ["user_service", "payment_service", "stockapi_lied_us"],
+    "私有服务": ["internal_db", "admin_panel", "chat_lied_us", "md_lied_us", "weather_lied_us", "shouxin_lied_us", "bit_lied_us"],
     "Xray": ["lax_vwc_2083", "lax_grpc_8443", "lax_grpc_2087", "lax_vision_2053", "lax_vision_2096"],
     "服务器": ["server_us"]
   }
@@ -55,23 +55,6 @@ const workerConfig = {
       timeout: 10000,
       responseKeyword: 'Available endpoints'
     },
-    {
-      id: 'oneapi_lied_top',
-      name: 'oneapi',
-      method: 'GET',
-      target: 'https://oneapi.lied.top',
-      expectedCodes: [200],
-      timeout: 10000,
-      responseKeyword: 'enable JavaScript'
-    },
-    {
-      id: 'gemini_api_lied_top',
-      name: 'gemini-api',
-      method: 'GET',
-      target: 'https://gemini-api.lied.top',
-      expectedCodes: [404],
-      timeout: 10000
-    },
 
     // 私有服务
     {
@@ -102,25 +85,16 @@ const workerConfig = {
       responseKeyword: '预测天数'
     },
     {
-      id: 'shouxin_lied_top',
-      name: 'shouxin.lied.top 生成工具',
+      id: 'shouxin_lied_us',
+      name: 'shouxin.lied.us 生成工具',
       method: 'GET',
-      target: 'https://shouxin.lied.top',
+      target: 'https://shouxin.lied.us',
       expectedCodes: [200],
       timeout: 10000,
       responseKeyword: '生成结果'
     },
     {
-      id: 'dns_lied_top',
-      name: 'AdguardHome',
-      method: 'GET',
-      target: 'https://dns.lied.top',
-      expectedCodes: [200],
-      timeout: 10000,
-      responseKeyword: 'You need to enable JavaScript to run this app'
-    },
-    {
-      id: 'bit_lied_top',
+      id: 'bit_lied_us',
       name: 'Vaultwarden',
       method: 'GET',
       target: 'https://bit.lied.us',
