@@ -95,9 +95,7 @@ jobs:
           
           # Delete existing Pages project to avoid KV namespace conflicts from old deployments
           echo "Deleting existing Pages project to avoid KV conflicts..."
-          curl -X DELETE "https://api.cloudflare.com/client/v4/accounts/$TF_VAR_CLOUDFLARE_ACCOUNT_ID/pages/projects/uptimeflare" \
-            -H "Authorization: Bearer $CLOUDFLARE_API_TOKEN" \
-            -H "Content-Type: application/json" || echo "WARNING: Pages project deletion failed or not found, continuing..."
+          npx wrangler pages project delete uptimeflare --yes || echo "WARNING: Pages project deletion failed or not found, continuing..."
 
           terraform apply -auto-approve -input=false
         env:
