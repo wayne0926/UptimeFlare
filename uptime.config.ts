@@ -20,9 +20,18 @@ const workerConfig: WorkerConfig = {
   kvWriteCooldownMinutes: 3,
 
   notification: {
-    appriseApiServer: "https://apprise.example.com/notify",
-    recipientUrl: "tgram://bottoken/ChatID",
-    timeZone: "Asia/Shanghai",
+    // [Optional] Notification webhook settings, if not specified, no notification will be sent
+    // More info at Wiki: https://github.com/lyc8503/UptimeFlare/wiki/Setup-notification
+    // webhook: {
+    //   url: 'https://api.telegram.org/bot<YOUR_BOT_TOKEN>/sendMessage',
+    //   method: 'POST',
+    //   payloadType: 'json',
+    //   payload: {
+    //     chat_id: '<YOUR_CHAT_ID>',
+    //     text: '$MSG',
+    //   },
+    // },
+    timeZone: 'Asia/Shanghai',
     gracePeriod: 5
   },
 
