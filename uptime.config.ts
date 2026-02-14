@@ -1,4 +1,6 @@
-const pageConfig = {
+import { MaintenanceConfig, PageConfig, WorkerConfig } from './types/config'
+
+const pageConfig: PageConfig = {
   title: "服务运行状态",
   links: [
     { link: 'https://github.com/lyc8503', label: 'GitHub' },
@@ -14,7 +16,7 @@ const pageConfig = {
   }
 }
 
-const workerConfig = {
+const workerConfig: WorkerConfig = {
   kvWriteCooldownMinutes: 3,
 
   notification: {
@@ -173,4 +175,6 @@ const workerConfig = {
   },
 }
 
-export { pageConfig, workerConfig }
+const maintenances: MaintenanceConfig[] = []
+
+export { pageConfig, workerConfig, maintenances }
