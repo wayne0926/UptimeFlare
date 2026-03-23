@@ -7,65 +7,146 @@ import { MaintenanceConfig, PageConfig, WorkerConfig } from './types/config'
 
 const pageConfig: PageConfig = {
   // Title for your status page
-  title: "lyc8503's Status Page",
+  title: "wrans's Status Page",
   // Links shown at the header of your status page, could set `highlight` to `true`
   links: [
-    { link: 'https://github.com/lyc8503', label: 'GitHub' },
-    { link: 'https://blog.lyc8503.net/', label: 'Blog' },
-    { link: 'mailto:me@lyc8503.net', label: 'Email Me', highlight: true },
+    { link: 'https://github.com/wayne0926', label: 'GitHub' },
+    { link: 'https://wrans.top', label: 'Blog' },
+    { link: 'mailto:wran@outlook.it', label: 'Email Me', highlight: true },
   ],
+  // [OPTIONAL] Group your monitors
+  group: {
+    '🌐 Frontend Services': ['login_page', 'wrans_blog'],
+    '⚙️ Backend API': ['stockapiliedus'],
+    '🔐 Private Services': ['chatliedus', 'mdliedus', 'weatherliedus', 'shouxinliedus', 'bitliedus'],
+    '📡 Xray': ['lax_vwc', 'lax_grpc8443', 'lax_grpc2087', 'lax_vision2053', 'lax_vision2096'],
+    '🖥️ Server': ['server_us'],
+  },
 }
 
 const workerConfig: WorkerConfig = {
   // Define all your monitors here
   monitors: [
-    // Example HTTP Monitor
+    // ── Frontend Services ──
     {
-      // `id` should be unique, history will be kept if the `id` remains constant
-      id: 'foo_monitor',
-      // `name` is used at status page and callback message
-      name: 'My API Monitor',
-      // `method` should be a valid HTTP Method
+      id: 'login_page',
+      name: 'xui面板',
       method: 'GET',
-      // `target` is a valid URL
-      target: 'https://example.com',
-      // [OPTIONAL] `tooltip` is ONLY used at status page to show a tooltip
-      tooltip: 'This is a tooltip for this monitor',
-      // [OPTIONAL] `statusPageLink` is ONLY used for clickable link at status page
-      statusPageLink: 'https://example.com',
-      // [OPTIONAL] `expectedCodes` is an array of acceptable HTTP response codes, if not specified, default to 2xx
-      expectedCodes: [200],
-      // [OPTIONAL] `timeout` in millisecond, if not specified, default to 10000
-      timeout: 10000,
-      // [OPTIONAL] headers to be sent
-      headers: {
-        'User-Agent': 'Uptimeflare',
-        Authorization: 'Bearer YOUR_TOKEN_HERE',
-      },
-      // [OPTIONAL] body to be sent (require POST/PUT/PATCH method)
-      // body: 'Hello, world!',
-      // [OPTIONAL] if specified, the response must contains the keyword to be considered as operational.
-      // responseKeyword: 'success',
-      // [OPTIONAL] if specified, the response must NOT contains the keyword to be considered as operational.
-      // responseForbiddenKeyword: 'bad gateway',
-      // [OPTIONAL] if specified, will call the check proxy to check the monitor, mainly for geo-specific checks
-      // refer to docs https://github.com/lyc8503/UptimeFlare/wiki/Check-proxy-setup before setting this value
-      // currently supports `worker://`, `globalping://` and `http(s)://` proxies
-      // checkProxy: 'worker://weur',
-      // [OPTIONAL] if true, the check will fallback to local if the specified proxy is down
-      // checkProxyFallback: true,
+      target: 'https://xui.lied.us/wne66',
+      tooltip: 'xui 面板登录页',
+      statusPageLink: 'https://xui.lied.us/wne66',
     },
-    // Example TCP Monitor
     {
-      id: 'test_tcp_monitor',
-      name: 'Example TCP Monitor',
-      // `method` should be `TCP_PING` for tcp monitors
+      id: 'wrans_blog',
+      name: 'wrans.top 博客',
+      method: 'GET',
+      target: 'https://wrans.top',
+      tooltip: 'wrans.top 个人博客',
+      statusPageLink: 'https://wrans.top',
+    },
+
+    // ── Backend API ──
+    {
+      id: 'stockapiliedus',
+      name: 'stockapi',
+      method: 'GET',
+      target: 'https://stockapi.lied.us',
+      tooltip: 'Stock API 后端服务',
+      statusPageLink: 'https://stockapi.lied.us',
+    },
+
+    // ── Private Services ──
+    {
+      id: 'chatliedus',
+      name: 'chat.lied.us (LobeChat)',
+      method: 'GET',
+      target: 'https://chat.lied.us',
+      tooltip: 'LobeChat 私有部署',
+      statusPageLink: 'https://chat.lied.us',
+    },
+    {
+      id: 'mdliedus',
+      name: 'md.lied.us 文档库',
+      method: 'GET',
+      target: 'https://md.lied.us',
+      tooltip: 'Markdown 文档库',
+      statusPageLink: 'https://md.lied.us',
+    },
+    {
+      id: 'weatherliedus',
+      name: 'weather.lied.us 天气',
+      method: 'GET',
+      target: 'https://weather.lied.us',
+      tooltip: '天气服务',
+      statusPageLink: 'https://weather.lied.us',
+    },
+    {
+      id: 'shouxinliedus',
+      name: 'shouxin.lied.us 生成工具',
+      method: 'GET',
+      target: 'https://shouxin.lied.us',
+      tooltip: '手写生成工具',
+      statusPageLink: 'https://shouxin.lied.us',
+    },
+    {
+      id: 'bitliedus',
+      name: 'Vaultwarden',
+      method: 'GET',
+      target: 'https://bit.lied.us',
+      tooltip: 'Vaultwarden 密码管理',
+      statusPageLink: 'https://bit.lied.us',
+    },
+
+    // ── Xray (TCP_PING) ──
+    {
+      id: 'lax_vwc',
+      name: 'LAX-vwc',
       method: 'TCP_PING',
-      // `target` should be `host:port` for tcp monitors
-      target: '1.2.3.4:22',
-      tooltip: 'My production server SSH',
-      statusPageLink: 'https://example.com',
+      target: 'server.lied.us:2083',
+      tooltip: 'LAX vwc :2083',
       timeout: 5000,
+    },
+    {
+      id: 'lax_grpc8443',
+      name: 'LAX-GRPC8443',
+      method: 'TCP_PING',
+      target: 'server.lied.us:8443',
+      tooltip: 'LAX gRPC :8443',
+      timeout: 5000,
+    },
+    {
+      id: 'lax_grpc2087',
+      name: 'LAX-GRPC2087',
+      method: 'TCP_PING',
+      target: 'server.lied.us:2087',
+      tooltip: 'LAX gRPC :2087',
+      timeout: 5000,
+    },
+    {
+      id: 'lax_vision2053',
+      name: 'LAX-Vision2053',
+      method: 'TCP_PING',
+      target: 'server.lied.us:2053',
+      tooltip: 'LAX Vision :2053',
+      timeout: 5000,
+    },
+    {
+      id: 'lax_vision2096',
+      name: 'LAX-Vision2096',
+      method: 'TCP_PING',
+      target: 'server.lied.us:2096',
+      tooltip: 'LAX Vision :2096',
+      timeout: 5000,
+    },
+
+    // ── Server ──
+    {
+      id: 'server_us',
+      name: '服务器（洛杉矶）',
+      method: 'GET',
+      target: 'http://server.lied.us',
+      tooltip: '洛杉矶服务器',
+      statusPageLink: 'http://server.lied.us',
     },
   ],
   // [Optional] Notification settings
@@ -110,25 +191,7 @@ const workerConfig: WorkerConfig = {
 // Also, related downtime notifications will be skipped (if any)
 // Of course, you can leave it empty if you don't need this feature
 
-// const maintenances: MaintenanceConfig[] = []
-
-const maintenances: MaintenanceConfig[] = [
-  {
-    // [Optional] Monitor IDs to be affected by this maintenance
-    monitors: ['foo_monitor', 'bar_monitor'],
-    // [Optional] default to "Scheduled Maintenance" if not specified
-    title: 'Test Maintenance',
-    // Description of the maintenance, will be shown at status page
-    body: 'This is a test maintenance, server software upgrade',
-    // Start time of the maintenance, in UNIX timestamp or ISO 8601 format
-    start: '2020-01-01T00:00:00+08:00',
-    // [Optional] end time of the maintenance, in UNIX timestamp or ISO 8601 format
-    // if not specified, the maintenance will be considered as on-going
-    end: '2050-01-01T00:00:00+08:00',
-    // [Optional] color of the maintenance alert at status page, default to "yellow"
-    color: 'blue',
-  },
-]
+const maintenances: MaintenanceConfig[] = []
 
 // Don't edit this line
 export { maintenances, pageConfig, workerConfig }
