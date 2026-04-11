@@ -121,6 +121,7 @@ const workerConfig: WorkerConfig = {
     },
 
     // ── Server ──
+    // Keep both server monitors on TCP_PING because ICMP ping may be blocked.
     {
       id: 'server_us',
       name: '服务器（洛杉矶）',
