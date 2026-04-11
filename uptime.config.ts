@@ -137,7 +137,7 @@ const workerConfig: WorkerConfig = {
       tooltip: '洛杉矶服务器2 :443',
       timeout: 5000,
     },
-  ]
+  ],
   // [Optional] Notification settings
   notification: {
     // [Optional] Notification webhook settings, if not specified, no notification will be sent
