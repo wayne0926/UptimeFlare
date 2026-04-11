@@ -16,11 +16,10 @@ const pageConfig: PageConfig = {
   ],
   // [OPTIONAL] Group your monitors
   group: {
-    '🌐 Frontend Services': ['login_page', 'wrans_blog'],
-    '⚙️ Backend API': ['stockapiliedus'],
-    '🔐 Private Services': ['chatliedus', 'mdliedus', 'weatherliedus', 'shouxinliedus', 'bitliedus'],
+    '🌐 Frontend Services': ['login_page', 'wrans_blog', 'galleryliedus'],
+    '🔐 Private Services': ['mdliedus', 'weatherliedus', 'bitliedus'],
     '📡 Xray': ['lax_vwc', 'lax_grpc8443', 'lax_grpc2087', 'lax_vision2053', 'lax_vision2096'],
-    '🖥️ Server': ['server_us'],
+    '🖥️ Server': ['server_us', 'server2_us'],
   },
 }
 
@@ -44,26 +43,16 @@ const workerConfig: WorkerConfig = {
       tooltip: 'wrans.top 个人博客',
       statusPageLink: 'https://wrans.top',
     },
-
-    // ── Backend API ──
     {
-      id: 'stockapiliedus',
-      name: 'stockapi',
+      id: 'galleryliedus',
+      name: 'gallery.lied.us',
       method: 'GET',
-      target: 'https://stockapi.lied.us',
-      tooltip: 'Stock API 后端服务',
-      statusPageLink: 'https://stockapi.lied.us',
+      target: 'https://gallery.lied.us',
+      tooltip: 'gallery.lied.us',
+      statusPageLink: 'https://gallery.lied.us',
     },
 
     // ── Private Services ──
-    {
-      id: 'chatliedus',
-      name: 'chat.lied.us (LobeChat)',
-      method: 'GET',
-      target: 'https://chat.lied.us',
-      tooltip: 'LobeChat 私有部署',
-      statusPageLink: 'https://chat.lied.us',
-    },
     {
       id: 'mdliedus',
       name: 'md.lied.us 文档库',
@@ -79,14 +68,6 @@ const workerConfig: WorkerConfig = {
       target: 'https://weather.lied.us',
       tooltip: '天气服务',
       statusPageLink: 'https://weather.lied.us',
-    },
-    {
-      id: 'shouxinliedus',
-      name: 'shouxin.lied.us 生成工具',
-      method: 'GET',
-      target: 'https://shouxin.lied.us',
-      tooltip: '手写生成工具',
-      statusPageLink: 'https://shouxin.lied.us',
     },
     {
       id: 'bitliedus',
@@ -143,12 +124,20 @@ const workerConfig: WorkerConfig = {
     {
       id: 'server_us',
       name: '服务器（洛杉矶）',
-      method: 'GET',
-      target: 'http://server.lied.us',
-      tooltip: '洛杉矶服务器',
-      statusPageLink: 'http://server.lied.us',
+      method: 'TCP_PING',
+      target: 'server.lied.us:2083',
+      tooltip: '洛杉矶服务器 :2083',
+      timeout: 5000,
     },
-  ],
+    {
+      id: 'server2_us',
+      name: '服务器2（洛杉矶）',
+      method: 'TCP_PING',
+      target: 'server1.lied.us:443',
+      tooltip: '洛杉矶服务器2 :443',
+      timeout: 5000,
+    },
+  ]
   // [Optional] Notification settings
   notification: {
     // [Optional] Notification webhook settings, if not specified, no notification will be sent
