@@ -16,7 +16,7 @@ const pageConfig: PageConfig = {
   ],
   // [OPTIONAL] Group your monitors
   group: {
-    '🌐 前台服务': ['wrans_blog', 'blog_lied_us', 'galleryliedus'],
+    '🌐 前台服务': ['blog_lied_us', 'galleryliedus'],
     '🔐 私有服务': ['bitliedus', 'mail_lied_us', 'translate_lied_us', 'dyid_lied_us'],
     '📡 Xray': ['lax_vwc', 'lax_grpc8443', 'lax_grpc2087', 'lax_vision2053', 'lax_vision2096'],
     '📧 邮件服务': ['maddy_smtp', 'maddy_imap'],
@@ -28,14 +28,6 @@ const workerConfig: WorkerConfig = {
   // Define all your monitors here
   monitors: [
     // ── 前台服务 ──
-    {
-      id: 'wrans_blog',
-      name: 'wrans.top 博客',
-      method: 'GET',
-      target: 'https://wrans.top',
-      tooltip: 'wrans.top 个人博客',
-      statusPageLink: 'https://wrans.top',
-    },
     {
       id: 'blog_lied_us',
       name: 'blog.lied.us',
