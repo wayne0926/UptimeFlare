@@ -16,25 +16,18 @@ const pageConfig: PageConfig = {
   ],
   // [OPTIONAL] Group your monitors
   group: {
-    '🌐 Frontend Services': ['login_page', 'wrans_blog', 'galleryliedus'],
-    '🔐 Private Services': ['mdliedus', 'weatherliedus', 'bitliedus'],
+    '🌐 前台服务': ['wrans_blog', 'blog_lied_us', 'galleryliedus'],
+    '🔐 私有服务': ['bitliedus', 'mail_lied_us', 'translate_lied_us', 'dyid_lied_us'],
     '📡 Xray': ['lax_vwc', 'lax_grpc8443', 'lax_grpc2087', 'lax_vision2053', 'lax_vision2096'],
-    '🖥️ Server': ['server_us', 'server2_us'],
+    '📧 邮件服务': ['maddy_smtp', 'maddy_imap'],
+    '🖥️ 服务器': ['server2_us'],
   },
 }
 
 const workerConfig: WorkerConfig = {
   // Define all your monitors here
   monitors: [
-    // ── Frontend Services ──
-    {
-      id: 'login_page',
-      name: 'xui面板',
-      method: 'GET',
-      target: 'https://xui.lied.us/wne66',
-      tooltip: 'xui 面板登录页',
-      statusPageLink: 'https://xui.lied.us/wne66',
-    },
+    // ── 前台服务 ──
     {
       id: 'wrans_blog',
       name: 'wrans.top 博客',
@@ -44,31 +37,23 @@ const workerConfig: WorkerConfig = {
       statusPageLink: 'https://wrans.top',
     },
     {
+      id: 'blog_lied_us',
+      name: 'blog.lied.us',
+      method: 'GET',
+      target: 'https://blog.lied.us',
+      tooltip: 'Ghost 博客',
+      statusPageLink: 'https://blog.lied.us',
+    },
+    {
       id: 'galleryliedus',
       name: 'gallery.lied.us',
       method: 'GET',
       target: 'https://gallery.lied.us',
-      tooltip: 'gallery.lied.us',
+      tooltip: '图库',
       statusPageLink: 'https://gallery.lied.us',
     },
 
-    // ── Private Services ──
-    {
-      id: 'mdliedus',
-      name: 'md.lied.us 文档库',
-      method: 'GET',
-      target: 'https://md.lied.us',
-      tooltip: 'Markdown 文档库',
-      statusPageLink: 'https://md.lied.us',
-    },
-    {
-      id: 'weatherliedus',
-      name: 'weather.lied.us 天气',
-      method: 'GET',
-      target: 'https://weather.lied.us',
-      tooltip: '天气服务',
-      statusPageLink: 'https://weather.lied.us',
-    },
+    // ── 私有服务 ──
     {
       id: 'bitliedus',
       name: 'Vaultwarden',
@@ -77,13 +62,37 @@ const workerConfig: WorkerConfig = {
       tooltip: 'Vaultwarden 密码管理',
       statusPageLink: 'https://bit.lied.us',
     },
+    {
+      id: 'mail_lied_us',
+      name: 'mail.lied.us 网页邮件',
+      method: 'GET',
+      target: 'https://mail.lied.us',
+      tooltip: 'Alps 网页邮件',
+      statusPageLink: 'https://mail.lied.us',
+    },
+    {
+      id: 'translate_lied_us',
+      name: 'translate.lied.us 翻译',
+      method: 'GET',
+      target: 'https://translate.lied.us',
+      tooltip: 'AI 翻译服务',
+      statusPageLink: 'https://translate.lied.us',
+    },
+    {
+      id: 'dyid_lied_us',
+      name: 'dyid.lied.us 抖音ID',
+      method: 'GET',
+      target: 'https://dyid.lied.us',
+      tooltip: '抖音ID提取器',
+      statusPageLink: 'https://dyid.lied.us',
+    },
 
     // ── Xray (TCP_PING) ──
     {
       id: 'lax_vwc',
       name: 'LAX-vwc',
       method: 'TCP_PING',
-      target: 'server.lied.us:2083',
+      target: 'server1.lied.us:2083',
       tooltip: 'LAX vwc :2083',
       timeout: 5000,
     },
@@ -91,7 +100,7 @@ const workerConfig: WorkerConfig = {
       id: 'lax_grpc8443',
       name: 'LAX-GRPC8443',
       method: 'TCP_PING',
-      target: 'server.lied.us:8443',
+      target: 'server1.lied.us:8443',
       tooltip: 'LAX gRPC :8443',
       timeout: 5000,
     },
@@ -99,7 +108,7 @@ const workerConfig: WorkerConfig = {
       id: 'lax_grpc2087',
       name: 'LAX-GRPC2087',
       method: 'TCP_PING',
-      target: 'server.lied.us:2087',
+      target: 'server1.lied.us:2087',
       tooltip: 'LAX gRPC :2087',
       timeout: 5000,
     },
@@ -107,7 +116,7 @@ const workerConfig: WorkerConfig = {
       id: 'lax_vision2053',
       name: 'LAX-Vision2053',
       method: 'TCP_PING',
-      target: 'server.lied.us:2053',
+      target: 'server1.lied.us:2053',
       tooltip: 'LAX Vision :2053',
       timeout: 5000,
     },
@@ -115,72 +124,56 @@ const workerConfig: WorkerConfig = {
       id: 'lax_vision2096',
       name: 'LAX-Vision2096',
       method: 'TCP_PING',
-      target: 'server.lied.us:2096',
+      target: 'server1.lied.us:2096',
       tooltip: 'LAX Vision :2096',
       timeout: 5000,
     },
 
-    // ── Server ──
-    // Keep both server monitors on TCP_PING because ICMP ping may be blocked.
+    // ── 邮件服务 (TCP_PING) ──
     {
-      id: 'server_us',
-      name: '服务器（洛杉矶）',
+      id: 'maddy_smtp',
+      name: 'Maddy SMTP',
       method: 'TCP_PING',
-      target: 'server.lied.us:2083',
-      tooltip: '洛杉矶服务器 :2083',
+      target: 'server1.lied.us:587',
+      tooltip: 'Maddy 提交端口 :587',
       timeout: 5000,
     },
     {
-      id: 'server2_us',
-      name: '服务器2（洛杉矶）',
+      id: 'maddy_imap',
+      name: 'Maddy IMAP',
       method: 'TCP_PING',
-      target: 'server1.lied.us:80',
-      tooltip: '洛杉矶服务器2 :80',
+      target: 'server1.lied.us:993',
+      tooltip: 'Maddy IMAPS :993',
+      timeout: 5000,
+    },
+
+    // ── 服务器 ──
+    {
+      id: 'server2_us',
+      name: '服务器（洛杉矶）',
+      method: 'TCP_PING',
+      target: 'server1.lied.us:22',
+      tooltip: '洛杉矶服务器 :22',
       timeout: 5000,
     },
   ],
   // [Optional] Notification settings
   notification: {
-    // [Optional] Notification webhook settings, if not specified, no notification will be sent
-    // More info at Wiki: https://github.com/lyc8503/UptimeFlare/wiki/Setup-notification
     webhook: {
-      // [Required] webhook URL (example: Telegram Bot API)
       url: 'https://api.telegram.org/bot123456:ABCDEF/sendMessage',
-      // [Optional] HTTP method, default to 'GET' for payloadType=param, 'POST' otherwise
-      // method: 'POST',
-      // [Optional] headers to be sent
-      // headers: {
-      //   foo: 'bar',
-      // },
-      // [Required] Specify how to encode the payload
-      // Should be one of 'param', 'json' or 'x-www-form-urlencoded'
-      // 'param': append url-encoded payload to URL search parameters
-      // 'json': POST json payload as body, set content-type header to 'application/json'
-      // 'x-www-form-urlencoded': POST url-encoded payload as body, set content-type header to 'x-www-form-urlencoded'
       payloadType: 'x-www-form-urlencoded',
-      // [Required] payload to be sent
-      // $MSG will be replaced with the human-readable notification message
       payload: {
         chat_id: 12345678,
         text: '$MSG',
       },
-      // [Optional] timeout calling this webhook, in millisecond, default to 5000
       timeout: 10000,
     },
-    // [Optional] timezone used in notification messages, default to "Etc/GMT"
     timeZone: 'Asia/Shanghai',
-    // [Optional] grace period in minutes before sending a notification
-    // notification will be sent only if the monitor is down for N continuous checks after the initial failure
-    // if not specified, notification will be sent immediately
     gracePeriod: 5,
   },
 }
 
 // You can define multiple maintenances here
-// During maintenance, an alert will be shown at status page
-// Also, related downtime notifications will be skipped (if any)
-// Of course, you can leave it empty if you don't need this feature
-
 const maintenances: MaintenanceConfig[] = []
 
 // Don't edit this line
